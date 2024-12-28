@@ -99,6 +99,20 @@ Projenin amacı, bir haber web sitesinden toplanan verileri (örneğin, `news.js
 *   **Modal ile Haber Detayı:** Haber kartlarına tıklayınca haberin tamamı modalda görünür.
 *   **Kullanıcı Dostu Arayüz:**  Arayüzde Bootstrap kullanılarak duyarlı ve modern bir tasarım sağlanmıştır.
 
+## Model Özellikleri
+
+Aşağıdaki tablo, `Models/Haber.cs` dosyasında tanımlanan `Haber` modelinin özelliklerini ve açıklamalarını içermektedir.
+
+| Özellik Adı      | Veri Tipi   | Açıklama                                                                      |
+| ---------------- | ----------- | ------------------------------------------------------------------------------ |
+| `title`          | `string`    | Haberin başlığını içerir.                                                       |
+| `content`        | `string`    | Haberin tam içeriğini içerir.                                                   |
+| `describe`       | `string`    | Haberin kısa özetini veya açıklamasını içerir.                                 |
+| `author`         | `string`    | Haberi yazan veya yayınlayan kişinin adını içerir.                             |
+| `created_date`    | `DateTime`  | Haberin oluşturulduğu veya yayınlandığı tarih ve saati içerir.  |
+| `url`            | `string`    | Haberin orijinal kaynağındaki URL'sini içerir.                                 |
+| `kategori`       | `string`   | Haberin ait olduğu kategori bilgisini içerir (örneğin, `gundem`, `dunya`, `ekonomi`). |
+
 ## Ekran Görüntüleri
 
 ![Arama](https://github.com/user-attachments/assets/851e5b22-fa11-4ca6-8553-52810161cca6)
