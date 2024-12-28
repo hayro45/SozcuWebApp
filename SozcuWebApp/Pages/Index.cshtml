@@ -1,0 +1,67 @@
+﻿@page
+@model SozcuWebApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Haberler";
+}
+
+<h1><a href="/">Haberler</a></h1>
+
+<form method="get">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Ara..." asp-for="SearchTerm" />
+        </div>
+        <div class="col-md-3">
+            <select asp-for="SelectedCategory" class="form-control">
+                <option value="">Tüm Kategoriler</option>
+                <option value="gundem">Gündem</option>
+                <option value="dunya">Dünya</option>
+                <option value="ekonomi">Ekonomi</option>
+                <option value="bilim-teknoloji">Bilim Teknoloji</option>
+                <option value="saglik">Sağlık</option>
+                <option value="egitim">Eğitim</option>
+                <option value="otomotiv">otomotiv</option>
+                <option value="gunun-icinden">Günün İçinden</option>
+                
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Ara</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+@if (Model.Haberler != null && Model.Haberler.Count > 0)
+{
+    <div class="mb-3">
+        <p>
+            Toplam <strong>@Model.TotalCount</strong> haber bulundu.
+            (<strong>@Model.CurrentPageStart - @Model.CurrentPageEnd</strong>) haber görüntüleniyor ve <strong>@Model.TotalPages</strong> sayfada listeleniyor.
+        </p>
+    </div>
+    <div class="row">
+        @foreach (var haber in Model.Haberler)
+        {
+            <partial name="_HaberPartial" model="haber" />
+        }
+    </div>
+    @if (Model.HasMore)
+    {
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <form method="get">
+                    <input type="hidden" asp-for="SearchTerm" />
+                    <input type="hidden" asp-for="SelectedCategory" />
+                    <input type="hidden" asp-for="PageNumber" value="@(Model.PageNumber + 1)" />
+                    <button type="submit" class="btn btn-primary">Daha Fazla Yükle</button>
+                </form>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>Aranılan kriterlere göre haber bulunamadı.</p>
+}

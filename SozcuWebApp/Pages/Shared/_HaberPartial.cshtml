@@ -1,0 +1,39 @@
+﻿@model SozcuWebApp.Models.Haber
+
+<div class="col-md-4">
+    <div class="card mb-3 haber-card" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#haberModal-@Model.GetHashCode()">
+        <div class="card-body">
+            <h5 class="card-title">@Model.title</h5>
+            <small class="text-muted">Yazar: @Model.author</small>
+            <p class="card-text">@Model.describe</p>
+            <p class="card-text">@Model.created_date.ToShortDateString()</p>
+            <p class="card-text">Kategori: @Model.kategori</p>
+        </div>
+    </div>
+</div>
+
+<!-- Haber Detay Modal -->
+<div class="modal fade" id="haberModal-@Model.GetHashCode()" tabindex="-1" aria-labelledby="haberModalLabel-@Model.GetHashCode()" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h5 class="modal-title" id="haberModalLabel-@Model.GetHashCode()">@Model.title</h5>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="card-text">@Model.describe</p>
+                <p><strong>Yazar:</strong> @Model.author</p>
+                <p><strong>Kategori:</strong> @Model.kategori</p>
+                <p><strong>Yayın Tarihi:</strong> @Model.created_date.ToString("dd/MM/yyyy HH:mm")</p>
+                <hr />
+                <p>@Model.content</p>
+            </div>
+            <div class="modal-footer">
+                <a href="@Model.url" class="btn btn-primary">Habere Git</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
